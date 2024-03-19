@@ -6,7 +6,7 @@ Silica Template
 
 1. Install the mod
 
-2. Optionally install <a href="https://github.com/dodad-2/QList">QList</a> to toggle the mod ingame
+2. Optionally install <a href="https://github.com/dodad-2/QList">QList</a> to enable ingame options
 
 # Changelog
 
