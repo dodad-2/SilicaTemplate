@@ -94,7 +94,7 @@ public class TemplateMod : MelonMod
 
         QList.Options.AddOption(
             ExampleButtonOption,
-            "Eaxmple Button",
+            "Exmple Button",
             "Options without preferences must have a description set here",
             "Runtime Category"
         );
