@@ -22,8 +22,6 @@ public class TemplateMod : MelonMod
 
     private static Action<ButtonOption>? ExampleButtonDelegate;
     private static Action<KeybindOption>? ExampleKeybindDelegate;
-
-    internal static bool QListPresent() => RegisteredMelons.Any(m => m.Info.Name == "QList");
     #endregion
 
     #region Melon
