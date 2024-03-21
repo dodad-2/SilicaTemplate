@@ -18,30 +18,30 @@ internal static class Log
         if (category == null)
         {
             category = MelonPreferences.CreateCategory("Debug");
-            category.SetFilePath(PreferencesConfig.FilePath);
+            category.SetFilePath(Config.FilePath);
             entry = category.CreateEntry<int>("LOG_LEVEL", 5, "Log Level");
             category.SaveToFile();
         }
 
         entry ??= category.GetEntry("LOG_LEVEL");
 
-        string[] valueNames = new string[8];
-        valueNames[0] = "None";
-        valueNames[1] = "Message";
-        valueNames[2] = "Info";
-        valueNames[3] = "Warning";
-        valueNames[4] = "Error";
-        valueNames[5] = "Fatal";
-        valueNames[6] = "Debug";
-        valueNames[7] = "All";
-
-        var logLevelOption = new QList.OptionTypes.DropdownOption(entry, 5, valueNames);
-        logLevelOption.OnValueChangedUntyped += OnValueUpdatedUntyped;
-
-        if (!Options.AddOption(logLevelOption))
+        if (Config.QListPresent())
         {
-            mod?.LoggerInstance.Error($"Log.Enable: Unable to add option!");
-            return false;
+            string[] valueNames = new string[8];
+            valueNames[0] = "None";
+            valueNames[1] = "Message";
+            valueNames[2] = "Info";
+            valueNames[3] = "Warning";
+            valueNames[4] = "Error";
+            valueNames[5] = "Fatal";
+            valueNames[6] = "Debug";
+            valueNames[7] = "All";
+
+            var logLevelOption = new QList.OptionTypes.DropdownOption(entry, 5, valueNames);
+            logLevelOption.OnValueChangedUntyped += OnValueUpdatedUntyped;
+
+            if (!Options.AddOption(logLevelOption))
+                LogOutput($"Log.Enable: Unable to add QList option!", ELevel.Warning);
         }
 
         try

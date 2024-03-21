@@ -31,7 +31,7 @@ public class TemplateMod : MelonMod
     {
         Instance = this;
 
-        if (QListPresent())
+        if (Config.QListPresent())
             CreateOptions();
     }
     #endregion
@@ -41,7 +41,7 @@ public class TemplateMod : MelonMod
     private void CreateOptions()
     {
         QList.Options.RegisterMod(this);
-        PreferencesConfig.SetFilePath(this);
+        Config.SetFilePath(this);
 
         // Melon Preference enabled Options
 
@@ -53,7 +53,7 @@ public class TemplateMod : MelonMod
         if (exampleCategory == null)
         {
             exampleCategory = MelonPreferences.CreateCategory("Example");
-            exampleCategory.SetFilePath(PreferencesConfig.FilePath);
+            exampleCategory.SetFilePath(Config.FilePath);
             exampleStringOptionPreference = exampleCategory.CreateEntry<string>(
                 ExampleStringOptionPrefID,
                 "Default Value",
